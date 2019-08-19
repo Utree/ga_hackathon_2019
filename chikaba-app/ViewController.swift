@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
+
 
 struct Item: Codable {
     let id: Int
@@ -36,8 +38,10 @@ struct Item: Codable {
 }
 
 class ViewController: UIViewController {
-
+    //    tableViewのインスタンス
     @IBOutlet weak var TableView: UITableView!
+    //    locationManagerのインスタンス
+    var locationManager: CLLocationManager!
 
 //    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
@@ -60,14 +64,29 @@ class ViewController: UIViewController {
         
         getImage()
         
+        setupLocationManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        セルの選択解除
+        //        セルの選択解除
         if let indexPathForSelectedRow = TableView.indexPathForSelectedRow {
             TableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+    }
+
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        guard let locationManager = locationManager else { return }
+        //　locationManagerの権限をviewControllerに渡す
+        locationManager.delegate = self
+        // アプリ利用時に位置情報を取得する
+        locationManager.requestWhenInUseAuthorization()
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedWhenInUse {
+            locationManager.distanceFilter = 10
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -147,6 +166,19 @@ class ViewController: UIViewController {
         }
     }
 }
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.first
+        let latitude = location?.coordinate.latitude
+        let longitude = location?.coordinate.longitude
+        
+        print("locationManager called")
+        print("latitude: \(latitude!)\nlongitude: \(longitude!)")
+    }
+}
+
+
 
 extension ViewController: UITableViewDelegate ,UITableViewDataSource {
     

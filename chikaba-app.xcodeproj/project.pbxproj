@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F6B6CE3230B268C00349E2D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6B6CE2230B268C00349E2D /* CoreLocation.framework */; };
 		3F81A7D2230A83D5006490B2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F81A7D1230A83D5006490B2 /* Alamofire.framework */; };
 		D70386A3230A62A7006B2A51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70386A2230A62A7006B2A51 /* AppDelegate.swift */; };
 		D70386A5230A62A7006B2A51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70386A4230A62A7006B2A51 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		2EDF5971950678FC56513040 /* Pods-chikaba-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chikaba-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-chikaba-app/Pods-chikaba-app.release.xcconfig"; sourceTree = "<group>"; };
+		3F6B6CE2230B268C00349E2D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F81A7D1230A83D5006490B2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC755032E93FA0A9710C11C /* Pods-chikaba-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chikaba-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chikaba-app/Pods-chikaba-app.debug.xcconfig"; sourceTree = "<group>"; };
 		D703869F230A62A7006B2A51 /* chikaba-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chikaba-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6B6CE3230B268C00349E2D /* CoreLocation.framework in Frameworks */,
 				3F81A7D2230A83D5006490B2 /* Alamofire.framework in Frameworks */,
 				E57561078D87C4D400282F4C /* Pods_chikaba_app.framework in Frameworks */,
 			);
@@ -63,6 +66,7 @@
 		B1C581FF701ED654A9ED0214 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F6B6CE2230B268C00349E2D /* CoreLocation.framework */,
 				3F81A7D1230A83D5006490B2 /* Alamofire.framework */,
 				E977090FD6808CF83B95D317 /* Pods_chikaba_app.framework */,
 			);
