@@ -35,23 +35,17 @@ struct Item: Codable {
     }
 }
 
-class ViewController: UIViewController,UITableViewDelegate
-    ,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
+class ViewController: UIViewController {
+
     @IBOutlet weak var TableView: UITableView!
     @IBAction func JumpSearchScreen(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TableView.delegate = self
+        TableView.dataSource = self
         
         // データの取得
 //        _ = requestFirst()
@@ -116,10 +110,38 @@ class ViewController: UIViewController,UITableViewDelegate
                 }
         }
     }
-
-
-  
-   
-
 }
 
+extension ViewController: UITableViewDelegate ,UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            return 10
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            if let cell: LogoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "logo") as? LogoTableViewCell {
+                return cell
+            }
+            return UITableViewCell()
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 300
+        } else {
+            return 100
+        }
+    }
+}
