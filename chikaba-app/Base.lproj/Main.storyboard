@@ -173,6 +173,7 @@
                     </view>
                     <connections>
                         <outlet property="URL" destination="723-XJ-s24" id="RKz-J3-h4U"/>
+                        <outlet property="pinnedMapView" destination="Sl4-rc-vDK" id="tWa-8A-Scj"/>
                         <outlet property="shopImage" destination="Qdz-aC-Dq2" id="Oo9-BT-gjS"/>
                         <outlet property="shopName" destination="JMY-u4-ui3" id="Shq-UN-LXV"/>
                         <segue destination="bcf-15-gYQ" kind="show" identifier="toSearch" id="POg-mo-KSJ"/>

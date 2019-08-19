@@ -124,9 +124,25 @@ extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        self.performSegue(withIdentifier: "toShopInfomation", sender: nil)
         // タップされたshopセクションのセルの行番号を出力
         if(indexPath.section == 1) {
             print("\(indexPath.row)番目の行が選択されました。")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // ②Segueの識別子確認
+        if segue.identifier == "toShopInfomation" {
+            
+            // ③遷移先ViewCntrollerの取得
+            let nextView = segue.destination as! ShopInfomation
+            
+            // ④値の設定
+            nextView.Name = "asasa"
+            nextView.Image = ""
+            nextView.url = "http://localhost/shop/webpage/"
         }
     }
 }
