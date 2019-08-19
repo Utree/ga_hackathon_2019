@@ -41,9 +41,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // データの取得
-        _ = requestFirst()
+//        _ = requestFirst()
+        
+//        getRecomendation()
+        
+        getStoreList()
+        
     }
-    
     
     private func requestFirst() -> [Item]? {
         var result: [Item]? = nil
@@ -61,6 +65,43 @@ class ViewController: UIViewController {
             }
         }
         return result
+    }
+    
+    private func getRecomendation() {
+        let parameters: Parameters = [
+            "type": "recomendation",
+            "latitude": 0,
+            "longitude": 0
+            
+        ]
+        
+        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .response { response in
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+            }
+        }
+    }
+    
+    private func getStoreList() {
+        let parameters: Parameters = [
+            "type": "search",
+            "latitude": 0,
+            "longitude": 0,
+            "filter": [
+                "destination": "null",
+                "vacant": "空　中　混",
+                "price": "500円以上1000未満",
+                "category": "中華"
+            ]
+        ]
+        
+        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .response { response in
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)")
+                }
+        }
     }
 }
 
