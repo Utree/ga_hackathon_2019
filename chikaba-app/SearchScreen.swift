@@ -9,15 +9,17 @@
 import UIKit
 
 class SearchScreen: UIViewController {
+    let sortList = ["カテゴリー","値段","空席"]
+    
 }
     extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            return 2
+            return 3
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if section == 0 {
+            if section == 0 || section == 1 {
                 return 1
             } else {
                 return 10
@@ -27,7 +29,7 @@ class SearchScreen: UIViewController {
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "logo") as! LogoTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "search") as! LogoTableViewCell
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
@@ -36,9 +38,10 @@ class SearchScreen: UIViewController {
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if indexPath.section == 0 {
-                return 300
-            } else {
+            if indexPath.section == 0 || indexPath.section == 1{
+                return 150
+            }
+           if indexPath.section == 2{
                 return 200
             }
         }

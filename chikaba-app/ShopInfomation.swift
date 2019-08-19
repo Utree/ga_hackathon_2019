@@ -19,6 +19,8 @@ class ShopInfomation: UIViewController {
    
     @IBOutlet weak var URL: UIButton!
     
+   
+    @IBOutlet weak var backButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         shopName.text = Name

@@ -334,8 +334,10 @@
                     </view>
                     <connections>
                         <outlet property="URL" destination="723-XJ-s24" id="WkV-dM-uNY"/>
+                        <outlet property="backButton" destination="koH-m1-j1O" id="j7n-vc-hm0"/>
                         <outlet property="shopImage" destination="Qdz-aC-Dq2" id="Oo9-BT-gjS"/>
                         <outlet property="shopName" destination="b80-x8-Ixg" id="F8N-6C-A0O"/>
+                        <segue destination="bcf-15-gYQ" kind="show" identifier="toSearch" id="POg-mo-KSJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzj-Lw-psQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -380,13 +382,24 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6uU-wU-IXD" id="Ijp-Gu-EHy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bme-hr-V0N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bme-hr-V0N" firstAttribute="top" secondItem="Ijp-Gu-EHy" secondAttribute="top" id="4yr-7R-yZK"/>
+                                                <constraint firstItem="bme-hr-V0N" firstAttribute="leading" secondItem="Ijp-Gu-EHy" secondAttribute="leading" id="U2E-bP-7aO"/>
+                                                <constraint firstAttribute="trailing" secondItem="bme-hr-V0N" secondAttribute="trailing" id="hL5-aC-Fzk"/>
+                                                <constraint firstAttribute="bottom" secondItem="bme-hr-V0N" secondAttribute="bottom" id="tKv-Wt-sJH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortShop" rowHeight="300" id="Hy8-xv-WGE">
-                                        <rect key="frame" x="0.0" y="188" width="414" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortShop" rowHeight="648" id="Hy8-xv-WGE">
+                                        <rect key="frame" x="0.0" y="188" width="414" height="648"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy8-xv-WGE" id="7Hy-Qw-AC9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="299.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="647.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SX4-I2-VkC">
@@ -414,10 +427,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtf-qc-7sB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049.2753623188407" y="95.089285714285708"/>
+            <point key="canvasLocation" x="1560.8695652173915" y="30.803571428571427"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cp7-uX-70x"/>
+        <segue reference="POg-mo-KSJ"/>
+        <segue reference="IK2-lA-0EU"/>
     </inferredMetricsTieBreakers>
 </document>
