@@ -42,6 +42,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var TableView: UITableView!
     //    locationManagerのインスタンス
     var locationManager: CLLocationManager!
+    //    データ
+    var shops:[ItemViewModel] = [ItemViewModel]()
 
 //    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
@@ -54,7 +56,10 @@ class ViewController: UIViewController {
         
         TableView.delegate = self
         TableView.dataSource = self
-        
+        //        TableViewにxibを登録
+        TableView.register(UINib(nibName: "ShopTableViewCell", bundle: nil), forCellReuseIdentifier: "shop")
+        self.setupData();
+
         // データの取得
 //        _ = requestFirst()
         
@@ -65,6 +70,10 @@ class ViewController: UIViewController {
         getImage()
         
         setupLocationManager()
+        
+        //        初期化
+        setupData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +83,11 @@ class ViewController: UIViewController {
         if let indexPathForSelectedRow = TableView.indexPathForSelectedRow {
             TableView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
+    }
+    
+    func setupData() {
+        //        データを初期化
+        shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!)]
     }
 
     func setupLocationManager() {
@@ -190,7 +204,8 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return 10
+            return shops.count
+
         }
     }
     
@@ -200,6 +215,9 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
+            
+            cell.setupCell(with: shops[indexPath.row])
+
             return cell
         }
     }
