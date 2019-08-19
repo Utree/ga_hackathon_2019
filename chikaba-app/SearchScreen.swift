@@ -19,6 +19,10 @@ class SearchScreen: UIViewController {
         print("\(list[sortCategory.selectedRow(inComponent: 0)])")
         
     }
+//    １つ前の画面に戻る
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     //    TableViewのデータ
     var shops:[ItemViewModel] = [ItemViewModel]()
 //    pickerViewのデータ

@@ -9,7 +9,6 @@
 import UIKit
 
 class ShopInfomation: UIViewController {
-
     var Name = ""
     var Image = ""
     var url = ""
@@ -19,8 +18,10 @@ class ShopInfomation: UIViewController {
    
     @IBOutlet weak var URL: UIButton!
     
-   
-    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBAction func forwardButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         shopName.text = Name
