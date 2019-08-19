@@ -12,9 +12,12 @@
 		D70386A8230A62A7006B2A51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70386A6230A62A7006B2A51 /* Main.storyboard */; };
 		D70386AA230A62AA006B2A51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70386A9230A62AA006B2A51 /* Assets.xcassets */; };
 		D70386AD230A62AA006B2A51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70386AB230A62AA006B2A51 /* LaunchScreen.storyboard */; };
+		E57561078D87C4D400282F4C /* Pods_chikaba_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E977090FD6808CF83B95D317 /* Pods_chikaba_app.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EDF5971950678FC56513040 /* Pods-chikaba-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chikaba-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-chikaba-app/Pods-chikaba-app.release.xcconfig"; sourceTree = "<group>"; };
+		7AC755032E93FA0A9710C11C /* Pods-chikaba-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chikaba-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chikaba-app/Pods-chikaba-app.debug.xcconfig"; sourceTree = "<group>"; };
 		D703869F230A62A7006B2A51 /* chikaba-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chikaba-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70386A2230A62A7006B2A51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70386A4230A62A7006B2A51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		D70386A9230A62AA006B2A51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70386AC230A62AA006B2A51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D70386AE230A62AA006B2A51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E977090FD6808CF83B95D317 /* Pods_chikaba_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chikaba_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E57561078D87C4D400282F4C /* Pods_chikaba_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F2C416F21BAEB56C642194C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7AC755032E93FA0A9710C11C /* Pods-chikaba-app.debug.xcconfig */,
+				2EDF5971950678FC56513040 /* Pods-chikaba-app.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B1C581FF701ED654A9ED0214 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E977090FD6808CF83B95D317 /* Pods_chikaba_app.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D7038696230A62A7006B2A51 = {
 			isa = PBXGroup;
 			children = (
 				D70386A1230A62A7006B2A51 /* chikaba-app */,
 				D70386A0230A62A7006B2A51 /* Products */,
+				6F2C416F21BAEB56C642194C /* Pods */,
+				B1C581FF701ED654A9ED0214 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D70386B1230A62AA006B2A51 /* Build configuration list for PBXNativeTarget "chikaba-app" */;
 			buildPhases = (
+				9C04848C76BF98348BFC7E04 /* [CP] Check Pods Manifest.lock */,
 				D703869B230A62A7006B2A51 /* Sources */,
 				D703869C230A62A7006B2A51 /* Frameworks */,
 				D703869D230A62A7006B2A51 /* Resources */,
+				512BBA52B0D6AC74609CCA77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		512BBA52B0D6AC74609CCA77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-chikaba-app/Pods-chikaba-app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chikaba-app/Pods-chikaba-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C04848C76BF98348BFC7E04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-chikaba-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D703869B230A62A7006B2A51 /* Sources */ = {
@@ -280,6 +345,7 @@
 		};
 		D70386B2230A62AA006B2A51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AC755032E93FA0A9710C11C /* Pods-chikaba-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +363,7 @@
 		};
 		D70386B3230A62AA006B2A51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EDF5971950678FC56513040 /* Pods-chikaba-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
