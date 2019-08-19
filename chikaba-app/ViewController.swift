@@ -38,7 +38,9 @@ struct Item: Codable {
 class ViewController: UIViewController {
 
     @IBOutlet weak var TableView: UITableView!
+//    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
+        print("検索ボタン押下")
     }
     
     override func viewDidLoad() {
@@ -56,6 +58,15 @@ class ViewController: UIViewController {
         
         getImage()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        セルの選択解除
+        if let indexPathForSelectedRow = TableView.indexPathForSelectedRow {
+            TableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
     }
     
     private func requestFirst() -> [Item]? {
@@ -169,9 +180,9 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // タップされたセルの行番号を出力
-            print("\(indexPath.section)番目のセクション")
-        print("\(indexPath.row)番目の行が選択されました。")
+        // タップされたshopセクションのセルの行番号を出力
+        if(indexPath.section == 1) {
+            print("\(indexPath.row)番目の行が選択されました。")
+        }
     }
-    
 }
