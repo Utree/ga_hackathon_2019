@@ -130,12 +130,11 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            if let cell: LogoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "logo") as? LogoTableViewCell {
-                return cell
-            }
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "logo") as! LogoTableViewCell
+            return cell
         } else {
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
+            return cell
         }
     }
     
@@ -143,7 +142,7 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
         if indexPath.section == 0 {
             return 300
         } else {
-            return 100
+            return 200
         }
     }
     

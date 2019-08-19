@@ -9,9 +9,10 @@
 import UIKit
 
 class LogoTableViewCell: UITableViewCell {
+    @IBOutlet weak var logo: UIImageView!
     
-    var aaaa: String = ""
-
+    @IBOutlet weak var jumpSearch: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
