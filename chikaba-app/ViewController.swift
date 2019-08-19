@@ -112,6 +112,27 @@ class ViewController: UIViewController {
                 }
         }
     }
+    
+    //    画像の表示
+    private func getImage() {
+        let url = "https://httpbin.org/image/png"
+        
+        let dest:DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent("pig.png")
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        
+        Alamofire.download(url, to: dest)
+            .responseData { [weak self](res) in
+                guard let myself = self else { return }
+                
+                if let data = res.result.value {
+                    let image = UIImage(data: data)
+                    //                    myself.pictureImageView.image = image //表示される
+                }
+        }
+    }
 }
 
 extension ViewController: UITableViewDelegate ,UITableViewDataSource {
@@ -146,26 +167,11 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
         }
     }
     
-    
-    //    画像の表示
-    private func getImage() {
-        let url = "https://httpbin.org/image/png"
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let dest:DownloadRequest.DownloadFileDestination = { _, _ in
-            let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent("pig.png")
-            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-        
-        Alamofire.download(url, to: dest)
-            .responseData { [weak self](res) in
-                guard let myself = self else { return }
-                
-                if let data = res.result.value {
-                    let image = UIImage(data: data)
-                    //                    myself.pictureImageView.image = image //表示される
-                }
-        }
+        // タップされたセルの行番号を出力
+            print("\(indexPath.section)番目のセクション")
+        print("\(indexPath.row)番目の行が選択されました。")
     }
     
 }
