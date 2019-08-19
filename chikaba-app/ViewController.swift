@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
+
 
 struct Item: Codable {
     let id: Int
@@ -36,8 +38,12 @@ struct Item: Codable {
 }
 
 class ViewController: UIViewController {
-
+    //    tableViewのインスタンス
     @IBOutlet weak var TableView: UITableView!
+    //    locationManagerのインスタンス
+    var locationManager: CLLocationManager!
+    //    データ
+    var shops:[ItemViewModel] = [ItemViewModel]()
 
 //    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
@@ -50,7 +56,10 @@ class ViewController: UIViewController {
         
         TableView.delegate = self
         TableView.dataSource = self
-        
+        //        TableViewにxibを登録
+        TableView.register(UINib(nibName: "ShopTableViewCell", bundle: nil), forCellReuseIdentifier: "shop")
+        self.setupData();
+
         // データの取得
 //        _ = requestFirst()
         
@@ -60,14 +69,38 @@ class ViewController: UIViewController {
         
         getImage()
         
+        setupLocationManager()
+        
+        //        初期化
+        setupData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        セルの選択解除
+        //        セルの選択解除
         if let indexPathForSelectedRow = TableView.indexPathForSelectedRow {
             TableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+    }
+    
+    func setupData() {
+        //        データを初期化
+        shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!)]
+    }
+
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        guard let locationManager = locationManager else { return }
+        //　locationManagerの権限をviewControllerに渡す
+        locationManager.delegate = self
+        // アプリ利用時に位置情報を取得する
+        locationManager.requestWhenInUseAuthorization()
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedWhenInUse {
+            locationManager.distanceFilter = 10
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -148,6 +181,19 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.first
+        let latitude = location?.coordinate.latitude
+        let longitude = location?.coordinate.longitude
+        
+        print("locationManager called")
+        print("latitude: \(latitude!)\nlongitude: \(longitude!)")
+    }
+}
+
+
+
 extension ViewController: UITableViewDelegate ,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -158,7 +204,8 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return 10
+            return shops.count
+
         }
     }
     
@@ -168,6 +215,9 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
+            
+            cell.setupCell(with: shops[indexPath.row])
+
             return cell
         }
     }
