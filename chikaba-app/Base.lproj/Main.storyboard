@@ -192,81 +192,50 @@
         <!--SearchScreen-->
         <scene sceneID="Lon-bo-v5D">
             <objects>
-                <viewController title="SearchScreen" id="bcf-15-gYQ" sceneMemberID="viewController">
+                <viewController title="SearchScreen" id="bcf-15-gYQ" customClass="SearchScreen" customModule="chikaba_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="44k-Mw-xip">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ru5-Yq-rQb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aIc-Ia-kD5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrY-3J-Lox">
+                                        <rect key="frame" x="14" y="19" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Back"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kc-ti-h4J">
+                                        <rect key="frame" x="359" y="19" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Search"/>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm1-D0-jIn">
+                                        <rect key="frame" x="74" y="19" width="265" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E8b-F5-20B">
+                                <rect key="frame" x="0.0" y="120" width="414" height="73"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lxr-Ii-Pbh">
+                                <rect key="frame" x="0.0" y="201" width="414" height="695"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="serach" rowHeight="100" id="CAo-dc-Q0x">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CAo-dc-Q0x" id="cOw-Qe-byq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="Thj-wz-yrg">
-                                                    <rect key="frame" x="40" y="27" width="334" height="44"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </searchBar>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Thj-wz-yrg" firstAttribute="leading" secondItem="cOw-Qe-byq" secondAttribute="leadingMargin" constant="20" id="3OO-J7-uGD"/>
-                                                <constraint firstItem="Thj-wz-yrg" firstAttribute="top" secondItem="cOw-Qe-byq" secondAttribute="topMargin" constant="16" id="9Zc-H9-PMe"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Thj-wz-yrg" secondAttribute="bottom" constant="18" id="tN6-bP-yg0"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Thj-wz-yrg" secondAttribute="trailing" constant="20" id="u7v-qr-7LN"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sort" rowHeight="60" id="6uU-wU-IXD">
-                                        <rect key="frame" x="0.0" y="128" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6uU-wU-IXD" id="Ijp-Gu-EHy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bme-hr-V0N">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
-                                                </pickerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="bme-hr-V0N" firstAttribute="top" secondItem="Ijp-Gu-EHy" secondAttribute="top" id="4yr-7R-yZK"/>
-                                                <constraint firstItem="bme-hr-V0N" firstAttribute="leading" secondItem="Ijp-Gu-EHy" secondAttribute="leading" id="U2E-bP-7aO"/>
-                                                <constraint firstAttribute="trailing" secondItem="bme-hr-V0N" secondAttribute="trailing" id="hL5-aC-Fzk"/>
-                                                <constraint firstAttribute="bottom" secondItem="bme-hr-V0N" secondAttribute="bottom" id="tKv-Wt-sJH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortShop" rowHeight="648" id="Hy8-xv-WGE">
-                                        <rect key="frame" x="0.0" y="188" width="414" height="648"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy8-xv-WGE" id="7Hy-Qw-AC9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="647.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SX4-I2-VkC">
-                                                    <rect key="frame" x="33" y="44" width="145" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Ru5-Yq-rQb" firstAttribute="top" secondItem="ADo-ES-3XH" secondAttribute="top" id="7UL-B6-EO4"/>
-                            <constraint firstItem="ADo-ES-3XH" firstAttribute="bottom" secondItem="Ru5-Yq-rQb" secondAttribute="bottom" id="IkA-RT-AcI"/>
-                            <constraint firstItem="Ru5-Yq-rQb" firstAttribute="leading" secondItem="ADo-ES-3XH" secondAttribute="leading" id="S50-t9-3SP"/>
-                            <constraint firstItem="ADo-ES-3XH" firstAttribute="trailing" secondItem="Ru5-Yq-rQb" secondAttribute="trailing" id="Xrg-4Z-PXx"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ADo-ES-3XH"/>
                     </view>
                     <connections>
+                        <outlet property="searchResultTable" destination="lxr-Ii-Pbh" id="6Hh-5v-8Vl"/>
                         <segue destination="wzy-I6-jW6" kind="show" identifier="toShopInfomation" id="IK2-lA-0EU"/>
                     </connections>
                 </viewController>
@@ -276,7 +245,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="POg-mo-KSJ"/>
+        <segue reference="yVq-Ge-n0B"/>
         <segue reference="IK2-lA-0EU"/>
     </inferredMetricsTieBreakers>
 </document>

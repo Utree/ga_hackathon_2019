@@ -10,41 +10,57 @@ import UIKit
 
 class SearchScreen: UIViewController {
     let sortList = ["カテゴリー","値段","空席"]
+//    tableViewのインスタンス
+    @IBOutlet weak var searchResultTable: UITableView!
+//    データ
+    var shops:[ItemViewModel] = [ItemViewModel]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchResultTable.delegate = self
+        searchResultTable.dataSource = self
+        
+        //        TableViewにxibを登録
+        searchResultTable.register(UINib(nibName: "ShopTableViewCell", bundle: nil), forCellReuseIdentifier: "shop")
+        self.setupData();
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        セルの選択解除
+        if let indexPathForSelectedRow = searchResultTable.indexPathForSelectedRow {
+            searchResultTable.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+    }
+    
+    func setupData() {
+        //        データを初期化
+        shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!)]
+    }
 }
     extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            return 3
+            return 1
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if section == 0 || section == 1 {
-                return 1
-            } else {
-                return 10
-            }
+            return shops.count
         }
     
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "search") as! LogoTableViewCell
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
-                return cell
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
+            
+            cell.setupCell(with: shops[indexPath.row])
+            
+            return cell
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if indexPath.section == 0 || indexPath.section == 1{
-                return 150
-            }
-           if indexPath.section == 2{
-                return 200
-            }
-            return 0
+            return 200
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
