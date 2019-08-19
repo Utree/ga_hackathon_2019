@@ -38,9 +38,11 @@ struct Item: Codable {
 class ViewController: UIViewController {
 
     @IBOutlet weak var TableView: UITableView!
+
 //    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
         print("検索ボタン押下")
+        self.performSegue(withIdentifier: "toSearch", sender: nil)
     }
     
     override func viewDidLoad() {

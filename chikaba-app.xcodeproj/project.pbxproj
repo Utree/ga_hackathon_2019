@@ -15,6 +15,7 @@
 		D70386AD230A62AA006B2A51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70386AB230A62AA006B2A51 /* LaunchScreen.storyboard */; };
 		D70386B5230ABE2F006B2A51 /* LogoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70386B4230ABE2F006B2A51 /* LogoTableViewCell.swift */; };
 		D70386B9230ACE51006B2A51 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70386B8230ACE51006B2A51 /* ShopTableViewCell.swift */; };
+		D70386BB230AE9EB006B2A51 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70386BA230AE9EB006B2A51 /* SearchScreen.swift */; };
 		E57561078D87C4D400282F4C /* Pods_chikaba_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E977090FD6808CF83B95D317 /* Pods_chikaba_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		D70386AE230A62AA006B2A51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70386B4230ABE2F006B2A51 /* LogoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoTableViewCell.swift; sourceTree = "<group>"; };
 		D70386B8230ACE51006B2A51 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
+		D70386BA230AE9EB006B2A51 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		E977090FD6808CF83B95D317 /* Pods_chikaba_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chikaba_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 			children = (
 				D70386A2230A62A7006B2A51 /* AppDelegate.swift */,
 				D70386A4230A62A7006B2A51 /* ViewController.swift */,
+				D70386BA230AE9EB006B2A51 /* SearchScreen.swift */,
 				D70386A6230A62A7006B2A51 /* Main.storyboard */,
 				D70386A9230A62AA006B2A51 /* Assets.xcassets */,
 				D70386AB230A62AA006B2A51 /* LaunchScreen.storyboard */,
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70386A5230A62A7006B2A51 /* ViewController.swift in Sources */,
+				D70386BB230AE9EB006B2A51 /* SearchScreen.swift in Sources */,
 				D70386A3230A62A7006B2A51 /* AppDelegate.swift in Sources */,
 				D70386B5230ABE2F006B2A51 /* LogoTableViewCell.swift in Sources */,
 				D70386B9230ACE51006B2A51 /* ShopTableViewCell.swift in Sources */,
