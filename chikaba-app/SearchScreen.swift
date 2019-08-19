@@ -15,7 +15,7 @@ class SearchScreen: UIViewController {
     @IBOutlet weak var sortCategory: UIPickerView!
 //    検索ボタン押下処理
     @IBAction func searchButton(_ sender: Any) {
-//        フィルタの値を取得
+//        pickerViewの値を取得
         print("\(list[sortCategory.selectedRow(inComponent: 0)])")
         
     }
