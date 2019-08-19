@@ -210,6 +210,9 @@
                                         <rect key="frame" x="359" y="19" width="48" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Search"/>
+                                        <connections>
+                                            <action selector="searchButton:" destination="bcf-15-gYQ" eventType="touchUpInside" id="YxS-DC-jDf"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm1-D0-jIn">
                                         <rect key="frame" x="74" y="19" width="265" height="30"/>
@@ -236,6 +239,7 @@
                     </view>
                     <connections>
                         <outlet property="searchResultTable" destination="lxr-Ii-Pbh" id="6Hh-5v-8Vl"/>
+                        <outlet property="sortCategory" destination="E8b-F5-20B" id="bbT-RZ-wK6"/>
                         <segue destination="wzy-I6-jW6" kind="show" identifier="toShopInfomation" id="IK2-lA-0EU"/>
                     </connections>
                 </viewController>
