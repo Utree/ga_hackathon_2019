@@ -239,6 +239,7 @@
                     <connections>
                         <outlet property="TableView" destination="OmU-F3-DyN" id="U7X-L8-kiD"/>
                         <segue destination="bcf-15-gYQ" kind="show" identifier="toSearch" id="yVq-Ge-n0B"/>
+                        <segue destination="wzy-I6-jW6" kind="show" identifier="toShopInfomation" id="cp7-uX-70x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -246,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--ShopInfomation-->
         <scene sceneID="7dK-Mb-Qu4">
             <objects>
-                <viewController id="wzy-I6-jW6" sceneMemberID="viewController">
+                <viewController title="ShopInfomation" id="wzy-I6-jW6" customClass="ShopInfomation" customModule="chikaba_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zwO-Xq-c2E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +277,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YFU-ax-Kty"/>
                                 </constraints>
-                                <state key="normal" title="http://localhost/shop/webpage/"/>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl4-rc-vDK">
                                 <rect key="frame" x="20" y="637" width="374" height="200"/>
@@ -332,10 +332,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WCS-Sx-wEM"/>
                     </view>
+                    <connections>
+                        <outlet property="URL" destination="723-XJ-s24" id="WkV-dM-uNY"/>
+                        <outlet property="shopImage" destination="Qdz-aC-Dq2" id="Oo9-BT-gjS"/>
+                        <outlet property="shopName" destination="b80-x8-Ixg" id="F8N-6C-A0O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzj-Lw-psQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="842"/>
+            <point key="canvasLocation" x="1002.8985507246377" y="934.82142857142856"/>
         </scene>
         <!--SearchScreen-->
         <scene sceneID="Lon-bo-v5D">
@@ -403,10 +408,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ADo-ES-3XH"/>
                     </view>
+                    <connections>
+                        <segue destination="wzy-I6-jW6" kind="show" identifier="toShopInfomation" id="IK2-lA-0EU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtf-qc-7sB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1049.2753623188407" y="95.089285714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cp7-uX-70x"/>
+    </inferredMetricsTieBreakers>
 </document>
