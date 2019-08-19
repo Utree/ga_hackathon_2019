@@ -44,6 +44,7 @@ class SearchScreen: UIViewController {
            if indexPath.section == 2{
                 return 200
             }
+            return 0
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
