@@ -58,7 +58,9 @@ class ViewController: UIViewController,UITableViewDelegate
         
 //        getRecomendation()
         
-        getStoreList()
+//        getStoreList()
+        
+        getImage()
         
     }
     
@@ -117,9 +119,25 @@ class ViewController: UIViewController,UITableViewDelegate
         }
     }
 
-
-  
-   
-
+//    画像の表示
+    private func getImage() {
+        let url = "https://httpbin.org/image/png"
+        
+        let dest:DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent("pig.png")
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        
+        Alamofire.download(url, to: dest)
+            .responseData { [weak self](res) in
+                guard let myself = self else { return }
+                
+                if let data = res.result.value {
+                    let image = UIImage(data: data)
+//                    myself.pictureImageView.image = image //表示される
+                }
+        }
+    }
 }
 
