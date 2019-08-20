@@ -53,6 +53,10 @@ class ViewController: UIViewController {
     var shops:[ItemViewModel] = [ItemViewModel]()
     var currentLongitude = 0.0
     var currentLatitude = 0.0
+    
+    var items:[Item] = [Item]()
+    
+    var selectedItemIndex = 0
 
 //    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
@@ -92,7 +96,7 @@ class ViewController: UIViewController {
             shops = [ItemViewModel]()
             //        データを整形
             for d in data {
-                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: "https://www.google.com")!, vacantID: d.vacants_id)
+                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: d.thumbnail_path)!, vacantID: d.vacants_id)
                              )
             }
         }
@@ -117,13 +121,14 @@ class ViewController: UIViewController {
     
     private func returnMockUpData(){
 //        リクエスト
-        Alamofire.request("https://api.myjson.com/bins/gdm9n").response { response in
+        Alamofire.request("https://api.myjson.com/bins/ksfuz").response { response in
             let decoder = JSONDecoder()
             
             guard let data = response.data else { return }
 //            Jsonのパース
             do {
-                self.setupData(data: try decoder.decode([Item].self, from: data))
+                self.items = try decoder.decode([Item].self, from: data)
+                self.setupData(data: self.items)
             } catch {
                 print(error)
             }
@@ -205,6 +210,7 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
         if(indexPath.section == 1) {
             print("\(indexPath.row)番目の行が選択されました。")
             
+            selectedItemIndex = indexPath.row
             
             self.performSegue(withIdentifier: "toShopInfomation", sender: nil)
         }
@@ -218,9 +224,9 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
             let nextView = segue.destination as! ShopInfomation
         
             // ④値の設定
-            nextView.Name = "asasa"
-            nextView.imagePath = "https://bankkita.com/images/mexican-food-png-3.png"
-            nextView.url = "http://localhost/shop/webpage/"
+            nextView.Name = items[selectedItemIndex].name
+            nextView.imagePath = items[selectedItemIndex].main_image_path
+            nextView.url = items[selectedItemIndex].webpage
         }
     }
 
