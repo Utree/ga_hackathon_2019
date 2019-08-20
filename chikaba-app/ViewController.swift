@@ -87,12 +87,13 @@ class ViewController: UIViewController {
     func setupData(data: [Item]) {
         if data.isEmpty {
             //        データを初期化
-                    shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!)]
+            shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacantID: 1), ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacantID: 1), ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacantID: 1)]
         } else {
             shops = [ItemViewModel]()
             //        データを整形
             for d in data {
-                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: "https://www.google.com")!))
+                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: "https://www.google.com")!, vacantID: d.vacants_id)
+                             )
             }
         }
         
@@ -144,27 +145,6 @@ class ViewController: UIViewController {
         }
         
         returnMockUpData()
-    }
-    
-    private func getStoreList() {
-        let parameters: Parameters = [
-            "type": "search",
-            "latitude": 0,
-            "longitude": 0,
-            "filter": [
-                "destination": "null",
-                "vacant": "空　中　混",
-                "price": "500円以上1000未満",
-                "category": "中華"
-            ]
-        ]
-        
-        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .response { response in
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                    print("Data: \(utf8Text)")
-                }
-        }
     }
 }
 

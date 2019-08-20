@@ -249,6 +249,7 @@
                         <viewLayoutGuide key="safeArea" id="ADo-ES-3XH"/>
                     </view>
                     <connections>
+                        <outlet property="keyWordField" destination="Bm1-D0-jIn" id="gBQ-pn-I0a"/>
                         <outlet property="searchResultTable" destination="lxr-Ii-Pbh" id="6Hh-5v-8Vl"/>
                         <outlet property="sortCategory" destination="E8b-F5-20B" id="bbT-RZ-wK6"/>
                         <segue destination="wzy-I6-jW6" kind="show" identifier="toShopInfomation" id="IK2-lA-0EU"/>
@@ -261,6 +262,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="yVq-Ge-n0B"/>
-        <segue reference="cp7-uX-70x"/>
+        <segue reference="IK2-lA-0EU"/>
     </inferredMetricsTieBreakers>
 </document>
