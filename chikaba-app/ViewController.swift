@@ -130,12 +130,12 @@ class ViewController: UIViewController {
     func setupData(data: [Item]) {
         if data.isEmpty {
             //        データを初期化
-            shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacantID: 1), ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacantID: 1), ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacantID: 1)]
+            shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacant: "few"), ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacant: "few"), ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!, vacant: "few")]
         } else {
             shops = [ItemViewModel]()
             //        データを整形
             for d in data {
-                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: d.thumbnail_path)!, vacantID: d.vacant_id)
+                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: d.thumbnail_path)!, vacant: d.vacant.name)
                              )
             }
         }
