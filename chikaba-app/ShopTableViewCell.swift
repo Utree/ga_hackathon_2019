@@ -27,13 +27,13 @@ class ShopTableViewCell: UITableViewCell {
     
     func setupCell(with viewModel: ItemViewModel) {
         print(viewModel.vacant)
-        if viewModel.vacant == "few" { self.vacantColor.backgroundColor = UIColor.init(red: 0, green: 100, blue: 0, alpha: 100)
+        if viewModel.vacant == "few" { self.vacantColor.backgroundColor = UIColor.init(red: 2/255, green: 207/255, blue: 40/255, alpha: 1)
         }
         if viewModel.vacant == "some" {
-            self.vacantColor.backgroundColor = UIColor.init(red: 100, green: 100, blue: 0, alpha: 100)
+            self.vacantColor.backgroundColor = UIColor.init(red: 252/255, green: 215/255, blue: 3/255, alpha: 1)
         }
         if viewModel.vacant == "many" {
-            self.vacantColor.backgroundColor = UIColor.init(red: 100, green: 0, blue: 0, alpha: 100)
+            self.vacantColor.backgroundColor = UIColor.init(red: 252/255, green: 98/255, blue: 3/255, alpha: 1)
         }
         
         
