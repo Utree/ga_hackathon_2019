@@ -15,8 +15,9 @@ struct Item: Codable {
     let id: Int
     let prices_id: Int
     let vacants_id: Int
+    let category_id: Int
+    
     let name: String
-    let category: String
     let discription: String
     let main_image_path: String
     let place: String
@@ -24,14 +25,20 @@ struct Item: Codable {
     let webpage: String
     let latitude: Float
     let longitude: Float
+    
     let price: Price
     let vacant: Vacant
+    let category: Category
     
     struct Price: Codable {
         let id: Int
         let name: String
     }
     struct Vacant: Codable {
+        let id: Int
+        let name: String
+    }
+    struct Category: Codable {
         let id: Int
         let name: String
     }
@@ -44,6 +51,8 @@ class ViewController: UIViewController {
     var locationManager: CLLocationManager!
     //    データ
     var shops:[ItemViewModel] = [ItemViewModel]()
+    var currentLongitude = 0.0
+    var currentLatitude = 0.0
 
 //    検索ボタン押下
     @IBAction func JumpSearchScreen(_ sender: Any) {
@@ -58,22 +67,12 @@ class ViewController: UIViewController {
         TableView.dataSource = self
         //        TableViewにxibを登録
         TableView.register(UINib(nibName: "ShopTableViewCell", bundle: nil), forCellReuseIdentifier: "shop")
-        self.setupData();
-
-        // データの取得
-//        _ = requestFirst()
         
-//        getRecomendation()
-        
-//        getStoreList()
-        
-        getImage()
-        
+//        位置情報取得
         setupLocationManager()
         
-        //        初期化
-        setupData()
-
+//        おすすめ一覧を表示
+        getRecomendation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,9 +84,20 @@ class ViewController: UIViewController {
         }
     }
     
-    func setupData() {
-        //        データを初期化
-        shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!)]
+    func setupData(data: [Item]) {
+        if data.isEmpty {
+            //        データを初期化
+                    shops = [ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!),ItemViewModel(name: "test", category: "test", distance: "test", priceRange: "test", thumbnail: URL(string: "https://httpbin.org/image/png")!)]
+        } else {
+            shops = [ItemViewModel]()
+            //        データを整形
+            for d in data {
+                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: "https://www.google.com")!))
+            }
+        }
+        
+        // データを更新
+        TableView.reloadData()
     }
 
     func setupLocationManager() {
@@ -104,38 +114,36 @@ class ViewController: UIViewController {
         }
     }
     
-    private func requestFirst() -> [Item]? {
-        var result: [Item]? = nil
-        
+    private func returnMockUpData(){
 //        リクエスト
-        Alamofire.request("https://api.myjson.com/bins/19ho7f").response { response in
+        Alamofire.request("https://api.myjson.com/bins/gdm9n").response { response in
             let decoder = JSONDecoder()
             
             guard let data = response.data else { return }
 //            Jsonのパース
             do {
-                result = try decoder.decode([Item].self, from: data)
+                self.setupData(data: try decoder.decode([Item].self, from: data))
             } catch {
                 print(error)
             }
         }
-        return result
     }
     
     private func getRecomendation() {
         let parameters: Parameters = [
             "type": "recomendation",
-            "latitude": 0,
-            "longitude": 0
-            
+            "latitude": self.currentLatitude,
+            "longitude": self.currentLongitude
         ]
         
         Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .response { response in
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
+//                print("Data: \(utf8Text)")
             }
         }
+        
+        returnMockUpData()
     }
     
     private func getStoreList() {
@@ -158,41 +166,15 @@ class ViewController: UIViewController {
                 }
         }
     }
-    
-    //    画像の表示
-    private func getImage() {
-        let url = "https://httpbin.org/image/png"
-        
-        let dest:DownloadRequest.DownloadFileDestination = { _, _ in
-            let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent("pig.png")
-            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-        
-        Alamofire.download(url, to: dest)
-            .responseData { [weak self](res) in
-                guard let myself = self else { return }
-                
-                if let data = res.result.value {
-                    let image = UIImage(data: data)
-                    //                    myself.pictureImageView.image = image //表示される
-                }
-        }
-    }
 }
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
-        let latitude = location?.coordinate.latitude
-        let longitude = location?.coordinate.longitude
-        
-        print("locationManager called")
-        print("latitude: \(latitude!)\nlongitude: \(longitude!)")
+        self.currentLatitude = location?.coordinate.latitude ?? 35.7020691
+        self.currentLongitude = location?.coordinate.longitude ?? 139.7753269
     }
 }
-
-
 
 extension ViewController: UITableViewDelegate ,UITableViewDataSource {
     
@@ -216,8 +198,9 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shop") as! ShopTableViewCell
             
+            // アイテムを追加
             cell.setupCell(with: shops[indexPath.row])
-
+    
             return cell
         }
     }
@@ -231,11 +214,12 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toShopInfomation", sender: nil)
         // タップされたshopセクションのセルの行番号を出力
         if(indexPath.section == 1) {
             print("\(indexPath.row)番目の行が選択されました。")
             
+            
+            self.performSegue(withIdentifier: "toShopInfomation", sender: nil)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
