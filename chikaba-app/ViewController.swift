@@ -150,7 +150,8 @@ class ViewController: UIViewController {
                 guard let data = response.data else { return }
                 //                Jsonのパース
                 do {
-                    self.setupData(data: try decoder.decode([Item].self, from: data))
+                    self.items = try decoder.decode([Item].self, from: data)
+                    self.setupData(data: self.items)
                 } catch {
                     print(error)
                 }

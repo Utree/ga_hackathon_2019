@@ -42,6 +42,9 @@ class SearchScreen: UIViewController {
     var selectedOrder = "値段"
     var keyWord = "フレンチ"
     
+    var items:[Item] = [Item]()
+    var selectedItemIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        delegate and datasource for tableview
@@ -105,7 +108,8 @@ class SearchScreen: UIViewController {
                 guard let data = response.data else { return }
                 //                Jsonのパース
                 do {
-                    self.setupData(data: try decoder.decode([Item].self, from: data))
+                    self.items = try decoder.decode([Item].self, from: data)
+                    self.setupData(data: self.items)
                 } catch {
                     print(error)
                 }
@@ -136,7 +140,8 @@ class SearchScreen: UIViewController {
             guard let data = response.data else { return }
             //            Jsonのパース
             do {
-                self.setupData(data: try decoder.decode([Item].self, from: data))
+                self.items = try decoder.decode([Item].self, from: data)
+                self.setupData(data: self.items)
             } catch {
                 print(error)
             }
@@ -224,7 +229,10 @@ extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
         // タップされたshopセクションのセルの行番号を出力
         if(indexPath.section == 1) {
             print("\(indexPath.row)番目の行が選択されました。")
+            
         }
+        selectedItemIndex = indexPath.row
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -236,9 +244,9 @@ extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
             let nextView = segue.destination as! ShopInfomation
             
             // ④値の設定
-            nextView.Name = "店"
-            nextView.imagePath = "https://bankkita.com/images/mexican-food-png-3.png"
-            nextView.url = "http://localhost/shop/webpage/"
+            nextView.Name = items[selectedItemIndex].name
+            nextView.imagePath = items[selectedItemIndex].main_image_path
+            nextView.url = items[selectedItemIndex].webpage
         }
     }
 }

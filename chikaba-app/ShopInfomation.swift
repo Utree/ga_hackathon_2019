@@ -45,7 +45,9 @@ class ShopInfomation: UIViewController {
     
     //    画像の表示
     private func getImage() {
-        try Nuke.loadImage(with: URL(string: imagePath)!, into:shopImage)
+        do {
+            try Nuke.loadImage(with: URL(string: imagePath)!, into:shopImage)
+        } catch {}
     }
     
 }
