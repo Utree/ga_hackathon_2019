@@ -101,8 +101,6 @@ class SearchScreen: UIViewController {
             "keyword": keyWord,
             ]
         
-        print(parameters)
-        
         Alamofire.request("https://chikaba.herokuapp.com/api/stores", method: .get, parameters: parameters)
             .response { response in
                 let decoder = JSONDecoder()
@@ -247,6 +245,7 @@ extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
             nextView.Name = items[selectedItemIndex].name
             nextView.imagePath = items[selectedItemIndex].main_image_path
             nextView.url = items[selectedItemIndex].webpage
+            nextView.descrip = items[selectedItemIndex].discription
         }
     }
 }

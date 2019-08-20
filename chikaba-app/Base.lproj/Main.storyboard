@@ -188,6 +188,7 @@
                     </view>
                     <connections>
                         <outlet property="pinnedMapView" destination="Sl4-rc-vDK" id="tWa-8A-Scj"/>
+                        <outlet property="shopDescription" destination="De8-Hx-NeY" id="hGc-ER-8GG"/>
                         <outlet property="shopImage" destination="Qdz-aC-Dq2" id="Oo9-BT-gjS"/>
                         <outlet property="shopName" destination="JMY-u4-ui3" id="Shq-UN-LXV"/>
                         <outlet property="webpageButton" destination="723-XJ-s24" id="U5V-6A-MBl"/>

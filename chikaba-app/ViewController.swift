@@ -267,6 +267,7 @@ extension ViewController: UITableViewDelegate ,UITableViewDataSource {
             nextView.Name = items[selectedItemIndex].name
             nextView.imagePath = items[selectedItemIndex].main_image_path
             nextView.url = items[selectedItemIndex].webpage
+            nextView.descrip = items[selectedItemIndex].discription
         }
     }
 
