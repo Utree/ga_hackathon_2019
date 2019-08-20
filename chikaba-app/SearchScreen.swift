@@ -18,6 +18,7 @@ class SearchScreen: UIViewController {
     //    locationManagerのインスタンス
     var locationManager: CLLocationManager!
     @IBOutlet weak var keyWordField: UITextField!
+    
     //    検索ボタン押下処理
     @IBAction func searchButton(_ sender: Any) {
 //        pickerViewの値を取得
@@ -25,6 +26,7 @@ class SearchScreen: UIViewController {
 //        keyWordFieldの値を取得
         keyWord = keyWordField.text ?? ""
         
+        getStoreList()
     }
 //    １つ前の画面に戻る
     @IBAction func backButton(_ sender: Any) {
