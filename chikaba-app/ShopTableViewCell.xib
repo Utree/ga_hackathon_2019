@@ -50,6 +50,12 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="gMs-wK-pLW"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Qg-5hP">
+                    <rect key="frame" x="334" y="0.0" width="60" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="3h0-pU-Bbi"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -61,8 +67,11 @@
                 <constraint firstItem="zjt-ge-0Oq" firstAttribute="top" secondItem="xIo-qx-hNM" secondAttribute="bottom" constant="4" id="QGC-VF-jsK"/>
                 <constraint firstItem="xIo-qx-hNM" firstAttribute="leading" secondItem="qoi-f0-bsS" secondAttribute="trailing" constant="8" id="VnB-Nb-EKT"/>
                 <constraint firstItem="qoi-f0-bsS" firstAttribute="centerY" secondItem="a1c-WT-KUp" secondAttribute="centerY" id="Z9W-k9-NFg"/>
+                <constraint firstAttribute="bottom" secondItem="e8J-Qg-5hP" secondAttribute="bottom" id="dzl-fw-7iy"/>
                 <constraint firstItem="S3E-3H-VBK" firstAttribute="top" secondItem="a1c-WT-KUp" secondAttribute="bottom" constant="4" id="gdq-wP-xfF"/>
+                <constraint firstItem="e8J-Qg-5hP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hXa-34-zGr"/>
                 <constraint firstItem="qoi-f0-bsS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="45" id="s50-zg-8eN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e8J-Qg-5hP" secondAttribute="trailing" constant="20" id="vni-84-Srv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -72,6 +81,7 @@
                 <outlet property="priceRangeLabel" destination="a1c-WT-KUp" id="qTa-PM-zWy"/>
                 <outlet property="shopNameLabel" destination="xIo-qx-hNM" id="G9x-NF-R2V"/>
                 <outlet property="thumbnailView" destination="qoi-f0-bsS" id="H0P-6t-U3p"/>
+                <outlet property="vacantColor" destination="e8J-Qg-5hP" id="kWP-z8-yu5"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
         </view>

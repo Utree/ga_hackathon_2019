@@ -19,13 +19,16 @@ class ShopTableViewCell: UITableViewCell {
     @IBOutlet weak var priceRangeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
 
+    @IBOutlet weak var vacantColor: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func setupCell(with viewModel: ItemViewModel) {
-        view.backgroundColor = UIColor.init(red: 100, green: 0, blue: 0, alpha: 0)
+  
+         self.vacantColor.backgroundColor = UIColor.init(red: 100, green: 0, blue: 0, alpha: 100)
+        
         
         if let name = viewModel.name {
             shopNameLabel.text = name
@@ -38,6 +41,7 @@ class ShopTableViewCell: UITableViewCell {
         }
         if let distance = viewModel.distance {
             distanceLabel.text = distance
+            
         }
         
         if let url = viewModel.thumbnail {
