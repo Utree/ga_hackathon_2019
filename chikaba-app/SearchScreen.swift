@@ -35,11 +35,11 @@ class SearchScreen: UIViewController {
     //    TableViewのデータ
     var shops:[ItemViewModel] = [ItemViewModel]()
 //    pickerViewのデータ
-    let list: [String] =  ["距離","値段","空席"]
+    let list: [String] =  ["destination","price","vacant"]
 //    緯度経度
     var currentLongitude = 0.0
     var currentLatitude = 0.0
-    var selectedOrder = "値段"
+    var selectedOrder = "price"
     var keyWord = "フレンチ"
     
     var items:[Item] = [Item]()
@@ -83,7 +83,7 @@ class SearchScreen: UIViewController {
             shops = [ItemViewModel]()
             //        データを整形
             for d in data {
-                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: "https://www.google.com")!, vacantID: d.vacants_id))
+                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: "https://www.google.com")!, vacantID: d.vacant_id))
             }
         }
         
@@ -101,7 +101,9 @@ class SearchScreen: UIViewController {
             "keyword": keyWord,
             ]
         
-        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        print(parameters)
+        
+        Alamofire.request("https://chikaba.herokuapp.com/api/stores", method: .get, parameters: parameters)
             .response { response in
                 let decoder = JSONDecoder()
                 
@@ -114,8 +116,6 @@ class SearchScreen: UIViewController {
                     print(error)
                 }
         }
-        
-        returnMockUpData()
     }
     
     func setupLocationManager() {

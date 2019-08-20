@@ -9,12 +9,39 @@
 import UIKit
 import Alamofire
 import CoreLocation
-
+//{
+//    "name": "テスト店40",
+//    "discription": "説明文がここに入ります",
+//    "main_image_path": "/img/thumbnail/40.png",
+//    "place": "六本木一丁目駅から徒歩5分",
+//    "thumbnail_path": "/img/thumbnail/40.png",
+//    "webpage": "https://hoge.com/fuga",
+//    "latitude": "35.6655448",
+//    "longitude": "139.7367123",
+//    "price_id": 6,
+//    "vacant_id": 3,
+//    "category_id": 2,
+//    "created_at": "2019-08-20T03:44:03.865Z",
+//    "updated_at": "2019-08-20T03:44:03.865Z",
+//    "price": {
+//        "id": 6,
+//        "name": "¥5,000〜¥10,000",
+//        "value": 5,
+//        "created_at": "2019-08-20T03:44:03.529Z",
+//        "updated_at": "2019-08-20T03:44:03.529Z"
+//    },
+//    "vacant": {
+//        "id": 3,
+//        "name": "many",
+//        "value": 2,
+//        "created_at": "2019-08-20T03:44:03.554Z",
+//        "updated_at": "2019-08-20T03:44:03.554Z"
+//    }
+//},
 
 struct Item: Codable {
-    let id: Int
-    let prices_id: Int
-    let vacants_id: Int
+    let price_id: Int
+    let vacant_id: Int
     let category_id: Int
     
     let name: String
@@ -23,25 +50,37 @@ struct Item: Codable {
     let place: String
     let thumbnail_path: String
     let webpage: String
-    let latitude: Float
-    let longitude: Float
+    let latitude: String
+    let longitude: String
     
     let price: Price
     let vacant: Vacant
     let category: Category
     
+    let created_at: String
+    let updated_at: String
+    
     struct Price: Codable {
         let id: Int
         let name: String
+        let value: Int
+        let created_at: String
+        let updated_at: String
     }
     struct Vacant: Codable {
         let id: Int
         let name: String
+        let value: Int
+        let created_at: String
+        let updated_at: String
     }
     struct Category: Codable {
         let id: Int
         let name: String
+        let created_at: String
+        let updated_at: String
     }
+    
 }
 
 class ViewController: UIViewController {
@@ -96,7 +135,7 @@ class ViewController: UIViewController {
             shops = [ItemViewModel]()
             //        データを整形
             for d in data {
-                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: d.thumbnail_path)!, vacantID: d.vacants_id)
+                shops.append(ItemViewModel(name: d.name, category: d.category.name, distance: d.place, priceRange: d.price.name, thumbnail: URL(string: d.thumbnail_path)!, vacantID: d.vacant_id)
                              )
             }
         }
@@ -142,7 +181,7 @@ class ViewController: UIViewController {
             "longitude": self.currentLongitude
         ]
         
-        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request("https://chikaba.herokuapp.com/api/stores", method: .get, parameters: parameters)
             .response { response in
                 
             let decoder = JSONDecoder()
@@ -157,7 +196,7 @@ class ViewController: UIViewController {
                 }
             }
         
-        returnMockUpData()
+//        returnMockUpData()
     }
 }
 
