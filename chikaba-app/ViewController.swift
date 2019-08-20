@@ -139,10 +139,17 @@ class ViewController: UIViewController {
         
         Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .response { response in
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-//                print("Data: \(utf8Text)")
+                
+            let decoder = JSONDecoder()
+                
+                guard let data = response.data else { return }
+                //                Jsonのパース
+                do {
+                    self.setupData(data: try decoder.decode([Item].self, from: data))
+                } catch {
+                    print(error)
+                }
             }
-        }
         
         returnMockUpData()
     }
