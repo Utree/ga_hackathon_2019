@@ -140,7 +140,7 @@ extension SearchScreen: UITableViewDelegate ,UITableViewDataSource {
             let nextView = segue.destination as! ShopInfomation
             
             // ④値の設定
-            nextView.Name = "asasa"
+            nextView.Name = "店"
             nextView.imagePath = "https://bankkita.com/images/mexican-food-png-3.png"
             nextView.url = "http://localhost/shop/webpage/"
         }
