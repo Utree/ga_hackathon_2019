@@ -145,27 +145,6 @@ class ViewController: UIViewController {
         
         returnMockUpData()
     }
-    
-    private func getStoreList() {
-        let parameters: Parameters = [
-            "type": "search",
-            "latitude": 0,
-            "longitude": 0,
-            "filter": [
-                "destination": "null",
-                "vacant": "空　中　混",
-                "price": "500円以上1000未満",
-                "category": "中華"
-            ]
-        ]
-        
-        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .response { response in
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                    print("Data: \(utf8Text)")
-                }
-        }
-    }
 }
 
 extension ViewController: CLLocationManagerDelegate {

@@ -25,7 +25,7 @@ class ShopTableViewCell: UITableViewCell {
     }
     
     func setupCell(with viewModel: ItemViewModel) {
-        view.backgroundColor = UIColor.init(red: 100, green: 0, blue: 0, alpha: 0)
+//        view.backgroundColor = UIColor.init(red: 100, green: 0, blue: 0, alpha: 0)
         
         if let name = viewModel.name {
             shopNameLabel.text = name
