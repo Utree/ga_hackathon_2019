@@ -51,9 +51,9 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Qg-5hP">
-                    <rect key="frame" x="334" y="0.0" width="60" height="200"/>
+                    <rect key="frame" x="0.0" y="0.0" width="35" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="3h0-pU-Bbi"/>
+                        <constraint firstAttribute="width" constant="35" id="0yI-2r-xO5"/>
                     </constraints>
                 </view>
             </subviews>
@@ -71,7 +71,7 @@
                 <constraint firstItem="S3E-3H-VBK" firstAttribute="top" secondItem="a1c-WT-KUp" secondAttribute="bottom" constant="4" id="gdq-wP-xfF"/>
                 <constraint firstItem="e8J-Qg-5hP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hXa-34-zGr"/>
                 <constraint firstItem="qoi-f0-bsS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="45" id="s50-zg-8eN"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e8J-Qg-5hP" secondAttribute="trailing" constant="20" id="vni-84-Srv"/>
+                <constraint firstItem="e8J-Qg-5hP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zM4-UW-bka"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

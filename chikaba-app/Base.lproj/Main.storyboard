@@ -52,21 +52,22 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="その他の条件で検索する">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="titleColor" red="1" green="0.071215352169999996" blue="0.24355764969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="JumpSearchScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPe-Wi-agV"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir3-Om-wox">
-                                                    <rect key="frame" x="20" y="268" width="122" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="緑:空アリ / 黄: やや空きアリ / 赤:混雑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir3-Om-wox">
+                                                    <rect key="frame" x="7" y="276" width="257" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ir3-Om-wox" firstAttribute="top" secondItem="2Xv-Ud-vi2" secondAttribute="bottom" constant="37" id="2Gl-kH-cKK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ir3-Om-wox" secondAttribute="trailing" constant="130" id="3Kj-wE-4Eb"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Xv-Ud-vi2" secondAttribute="trailing" constant="15" id="Lcj-yv-QFB"/>
                                                 <constraint firstItem="HY7-WN-8wg" firstAttribute="centerX" secondItem="KGe-5Q-mju" secondAttribute="centerX" id="VSG-30-ayc"/>
                                                 <constraint firstItem="HY7-WN-8wg" firstAttribute="top" secondItem="2Xv-Ud-vi2" secondAttribute="bottom" constant="7" id="oEq-SZ-aYQ"/>
@@ -209,31 +210,31 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrY-3J-Lox">
-                                        <rect key="frame" x="14" y="19" width="34" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrY-3J-Lox">
+                                        <rect key="frame" x="8" y="8" width="58" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Back"/>
+                                        <state key="normal" title="Back" image="戻る"/>
                                         <connections>
                                             <action selector="backButton:" destination="bcf-15-gYQ" eventType="touchUpInside" id="0g6-Nd-iGF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kc-ti-h4J">
-                                        <rect key="frame" x="359" y="19" width="48" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="フレンチ" borderStyle="roundedRect" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm1-D0-jIn">
+                                        <rect key="frame" x="74" y="19" width="265" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Search"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kc-ti-h4J">
+                                        <rect key="frame" x="347" y="7" width="59" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Search" image="虫眼鏡"/>
                                         <connections>
                                             <action selector="searchButton:" destination="bcf-15-gYQ" eventType="touchUpInside" id="YxS-DC-jDf"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="フレンチ" borderStyle="roundedRect" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm1-D0-jIn">
-                                        <rect key="frame" x="74" y="19" width="265" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.47899510873692785" green="0.94470236630362503" blue="0.99953407049999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lxr-Ii-Pbh">
                                 <rect key="frame" x="0.0" y="201" width="414" height="695"/>
@@ -260,6 +261,10 @@
             <point key="canvasLocation" x="1560.8695652173915" y="30.803571428571427"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="戻る" width="256" height="256"/>
+        <image name="虫眼鏡" width="245" height="216"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yVq-Ge-n0B"/>
         <segue reference="IK2-lA-0EU"/>
