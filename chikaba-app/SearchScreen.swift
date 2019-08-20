@@ -23,6 +23,14 @@ class SearchScreen: UIViewController {
     @IBAction func searchButton(_ sender: Any) {
 //        pickerViewの値を取得
         selectedOrder = list[sortCategory.selectedRow(inComponent: 0)]
+//        出力パラメータの修正
+        if selectedOrder == "距離" {
+            selectedOrder = "destination"
+        } else if selectedOrder == "値段" {
+            selectedOrder = "price"
+        } else {
+            selectedOrder = "vacant"
+        }
 //        keyWordFieldの値を取得
         keyWord = keyWordField.text ?? ""
         
@@ -35,7 +43,7 @@ class SearchScreen: UIViewController {
     //    TableViewのデータ
     var shops:[ItemViewModel] = [ItemViewModel]()
 //    pickerViewのデータ
-    let list: [String] =  ["destination","price","vacant"]
+    let list: [String] =  ["距離","値段","込み具合"]
 //    緯度経度
     var currentLongitude = 0.0
     var currentLatitude = 0.0
