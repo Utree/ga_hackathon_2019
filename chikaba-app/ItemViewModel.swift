@@ -14,12 +14,15 @@ struct ItemViewModel {
     let distance: String?
     let priceRange: String?
     let thumbnail: URL?
+    let vacantID: Int?
     
-    init(name: String, category: String, distance: String, priceRange: String, thumbnail: URL){
+    
+    init(name: String, category: String, distance: String, priceRange: String, thumbnail: URL ,vacantID: Int){
         self.name = name as String
         self.category = category as String
         self.distance = distance as String
         self.priceRange = priceRange as String
         self.thumbnail = thumbnail as URL
+        self.vacantID = vacantID as Int
     }
 }
